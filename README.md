@@ -42,7 +42,7 @@ Built with **LangChain**, **GPT-4**, and **Streamlit** to make analytics accessi
 ---
 
 ## 📂 Project Structure
-nlp_sql_assistant/
+nlp_sql_assistant
 │── app.py # Streamlit app
 │── create_db.py # Creates sample SQLite DB
 │── university.db # Example database
