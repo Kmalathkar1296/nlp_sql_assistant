@@ -43,8 +43,8 @@ Built with **LangChain**, **GPT-4**, and **Streamlit** to make analytics accessi
 
 ## 📂 Project Structure
 nlp_sql_assistant
-│── app.py # Streamlit app
-│── create_db.py # Creates sample SQLite DB
-│── university.db # Example database
-│── requirements.txt # Dependencies
-│── README.md # Project documentation
+app.py # Streamlit app
+create_db.py # Creates sample SQLite DB
+university.db # Example database
+requirements.txt # Dependencies
+README.md # Project documentation
