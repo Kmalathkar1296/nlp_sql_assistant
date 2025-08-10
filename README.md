@@ -14,9 +14,8 @@ Built with **LangChain**, **GPT-4**, and **Streamlit** to make analytics accessi
 
 | Ask in English | See the SQL & Results |
 |----------------|-----------------------|
-| ![Question Demo](assets/demo_question.png) | ![SQL Demo](assets/demo_results.png) |
+| ![Question Demo](demo-question.png) | ![SQL Demo](demo-results.png) |
 
-> 🎥 [Watch the Demo Video](https://youtu.be/your-demo-video-link) *(optional)*
 
 ---
 
@@ -43,3 +42,9 @@ Built with **LangChain**, **GPT-4**, and **Streamlit** to make analytics accessi
 ---
 
 ## 📂 Project Structure
+nlp_sql_assistant/
+│── app.py # Streamlit app
+│── create_db.py # Creates sample SQLite DB
+│── university.db # Example database
+│── requirements.txt # Dependencies
+│── README.md # Project documentation
