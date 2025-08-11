@@ -6,6 +6,7 @@ from langchain.sql_database import SQLDatabase
 from langchain_community.vectorstores import Chroma
 from langchain.embeddings import OpenAIEmbeddings
 from sqlalchemy import create_engine, text
+import chromadb
 
 # ---------------------
 # CONFIG
@@ -27,12 +28,15 @@ db = SQLDatabase.from_uri(db_path)
 # VECTOR STORE (Schema as RAG context)
 # ---------------------
 schema_text = db.get_table_info()
-embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
+chroma_client = chromadb.Client()
+
+embeddings = OpenAIEmbeddings(openai_api_key=st.secrets["OPENAI_API_KEY"])
+
 vectorstore = Chroma.from_texts(
     [schema_text],
     embeddings,
     collection_name="nlp_sql_assistant",
-    persist_directory=None  # force in-memory mode
+    client=chroma_client
 )
 retriever = vectorstore.as_retriever()
 
