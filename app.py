@@ -3,7 +3,7 @@ import streamlit as st
 from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.sql_database import SQLDatabase
-from langchain.vectorstores import Chroma
+from langchain_community.vectorstores import Chroma
 from langchain.embeddings import OpenAIEmbeddings
 from sqlalchemy import create_engine, text
 
@@ -28,7 +28,12 @@ db = SQLDatabase.from_uri(db_path)
 # ---------------------
 schema_text = db.get_table_info()
 embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
-vectorstore = Chroma.from_texts([schema_text], embeddings)
+vectorstore = Chroma.from_texts(
+    [schema_text],
+    embeddings,
+    collection_name="nlp_sql_assistant",
+    persist_directory=None  # force in-memory mode
+)
 retriever = vectorstore.as_retriever()
 
 # ---------------------
