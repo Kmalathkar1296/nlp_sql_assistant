@@ -6,6 +6,7 @@ from langchain.sql_database import SQLDatabase
 from langchain_community.vectorstores import Chroma
 from langchain.embeddings import OpenAIEmbeddings
 from sqlalchemy import create_engine, text
+os.environ["CHROMA_DB_IMPL"] = "duckdb+parquet" if not os.environ.get("STREAMLIT_RUNTIME") else "duckdb+parquet"
 import chromadb
 
 # ---------------------
