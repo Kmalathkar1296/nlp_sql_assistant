@@ -38,8 +38,13 @@ db = SQLDatabase.from_uri(db_path)
 # VECTOR STORE (Schema as RAG context)
 # ---------------------
 schema_text = db.get_table_info()
-chroma_client = chromadb.Client()
 
+chroma_client = chromadb.Client(
+    chromadb.config.Settings(
+        chroma_db_impl="duckdb+parquet",
+        persist_directory=None  # Memory-only mode
+    )
+)
 embeddings = OpenAIEmbeddings(openai_api_key=st.secrets["OPENAI_API_KEY"])
 
 vectorstore = Chroma.from_texts(
