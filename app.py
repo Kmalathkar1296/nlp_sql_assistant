@@ -10,9 +10,10 @@ except ImportError:
 import streamlit as st
 from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
-from langchain.sql_database import SQLDatabase
+
 from langchain_community.vectorstores import Chroma
-from langchain.embeddings import OpenAIEmbeddings
+from langchain_community.utilities import SQLDatabase
+from langchain_community.embeddings import OpenAIEmbeddings
 from sqlalchemy import create_engine, text
 os.environ["CHROMA_DB_IMPL"] = "duckdb+parquet" if not os.environ.get("STREAMLIT_RUNTIME") else "duckdb+parquet"
 import chromadb
